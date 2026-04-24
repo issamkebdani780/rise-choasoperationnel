@@ -6,10 +6,10 @@ const Footer = () => {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="bg-slate-950 text-slate-400 pt-16 pb-8">
+    <footer className="bg-slate-50 dark:bg-slate-950 text-slate-600 dark:text-slate-400 pt-16 pb-8 transition-colors duration-300">
       <div className="container mx-auto px-6">
         {/* Top row */}
-        <div className="flex flex-col lg:flex-row items-start justify-between gap-12 mb-12 pb-12 border-b border-slate-800">
+        <div className="flex flex-col lg:flex-row items-start justify-between gap-12 mb-12 pb-12 border-b border-slate-200 dark:border-slate-800">
           {/* Brand */}
           <div className="space-y-4 max-w-xs">
             <div className="flex items-center gap-2.5">
@@ -18,16 +18,21 @@ const Footer = () => {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 17V7m0 10a2 2 0 01-2 2H5a2 2 0 01-2-2V7a2 2 0 012-2h2a2 2 0 012 2m0 10a2 2 0 002 2h2a2 2 0 002-2M9 7a2 2 0 012-2h2a2 2 0 012 2m0 10V7m0 10a2 2 0 002 2h2a2 2 0 002-2V7a2 2 0 00-2-2h-2a2 2 0 00-2 2" />
                 </svg>
               </div>
-              <span className="text-xl font-black text-white">RiseManager</span>
+              <span className="text-xl font-black text-slate-900 dark:text-white transition-colors">RiseManager</span>
             </div>
             <p className="text-sm leading-relaxed">{t('footer_tagline')}</p>
+            
             {/* Lang switcher in footer */}
             <div className="flex items-center gap-2">
               {[['fr', 'FR'], ['en', 'EN'], ['ar', 'ع']].map(([code, label]) => (
                 <button
                   key={code}
                   onClick={() => i18n.changeLanguage(code)}
-                  className={`px-3 py-1.5 rounded-lg text-xs font-black transition-colors ${i18n.language?.startsWith(code) ? 'bg-primary text-white' : 'bg-slate-800 text-slate-400 hover:text-white hover:bg-slate-700'}`}
+                  className={`px-3 py-1.5 rounded-lg text-xs font-black transition-all ${
+                    i18n.language?.startsWith(code) 
+                    ? 'bg-primary text-white shadow-md shadow-primary/20' 
+                    : 'bg-white dark:bg-slate-800 text-slate-500 dark:text-slate-400 border border-slate-200 dark:border-transparent hover:text-primary dark:hover:text-white'
+                  }`}
                 >
                   {label}
                 </button>
@@ -38,7 +43,7 @@ const Footer = () => {
           {/* Links */}
           <div className="grid grid-cols-2 sm:grid-cols-3 gap-10">
             <div>
-              <div className="text-xs font-extrabold text-white uppercase tracking-widest mb-4">Produit</div>
+              <div className="text-xs font-extrabold text-slate-900 dark:text-white uppercase tracking-widest mb-4">Produit</div>
               <ul className="space-y-3 text-sm">
                 {[
                   ['Organisation', '#douleurs'],
@@ -53,7 +58,7 @@ const Footer = () => {
               </ul>
             </div>
             <div>
-              <div className="text-xs font-extrabold text-white uppercase tracking-widest mb-4">Tarifs</div>
+              <div className="text-xs font-extrabold text-slate-900 dark:text-white uppercase tracking-widest mb-4">Tarifs</div>
               <ul className="space-y-3 text-sm">
                 {[
                   [`${t('plan1_name')} — ${t('plan1_price')} DZD`, '#tarifs'],
@@ -68,7 +73,7 @@ const Footer = () => {
               </ul>
             </div>
             <div>
-              <div className="text-xs font-extrabold text-white uppercase tracking-widest mb-4">Support</div>
+              <div className="text-xs font-extrabold text-slate-900 dark:text-white uppercase tracking-widest mb-4">Support</div>
               <ul className="space-y-3 text-sm">
                 {[
                   [t('nav_faq'), '#faq'],
@@ -86,10 +91,10 @@ const Footer = () => {
         </div>
 
         {/* CTA banner */}
-        <div className="bg-gradient-to-r from-primary/10 to-blue-900/20 rounded-[24px] border border-primary/20 p-8 flex flex-col sm:flex-row items-center justify-between gap-6 mb-12">
+        <div className="bg-white dark:bg-blue-900/10 rounded-[24px] border border-slate-200 dark:border-primary/20 p-8 flex flex-col sm:flex-row items-center justify-between gap-6 mb-12 shadow-sm dark:shadow-none">
           <div>
-            <div className="text-lg font-extrabold text-white mb-1">Prêt à mettre de l'ordre ?</div>
-            <div className="text-sm text-slate-400">Rejoignez +200 équipes qui ont choisi RiseManager.</div>
+            <div className="text-lg font-extrabold text-slate-900 dark:text-white mb-1 transition-colors">Prêt à mettre de l'ordre ?</div>
+            <div className="text-sm text-slate-500 dark:text-slate-400">Rejoignez +200 équipes qui ont choisi RiseManager.</div>
           </div>
           <a href="#lead-form" className="shrink-0 px-8 py-4 bg-primary hover:bg-primary-hover text-white rounded-2xl font-extrabold text-sm shadow-lg shadow-primary/20 transition-all hover:-translate-y-0.5 active:scale-95">
             {t('nav_cta')}
@@ -97,12 +102,12 @@ const Footer = () => {
         </div>
 
         {/* Bottom row */}
-        <div className="flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-600">
+        <div className="flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500 dark:text-slate-600">
           <div>© {year} RiseManager. {t('footer_rights')}</div>
           <div className="flex items-center gap-4">
-            <a href="#" className="hover:text-slate-400 transition-colors">Confidentialité</a>
-            <a href="#" className="hover:text-slate-400 transition-colors">CGV</a>
-            <a href="#" className="hover:text-slate-400 transition-colors">Mentions légales</a>
+            <a href="#" className="hover:text-primary transition-colors">Confidentialité</a>
+            <a href="#" className="hover:text-primary transition-colors">CGV</a>
+            <a href="#" className="hover:text-primary transition-colors">Mentions légales</a>
           </div>
         </div>
       </div>

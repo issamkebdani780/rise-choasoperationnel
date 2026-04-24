@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
 const plans = [
   { nameKey: 'plan1_name', descKey: 'plan1_desc', priceKey: 'plan1_price', features: ['plan1_f1', 'plan1_f2', 'plan1_f3', 'plan1_f4'], ctaKey: 'plan1_cta', popular: false, gradient: 'from-slate-50 to-white dark:from-slate-900 dark:to-slate-900', border: 'border-slate-100 dark:border-slate-800' },
   { nameKey: 'plan2_name', descKey: 'plan2_desc', priceKey: 'plan2_price', features: ['plan2_f1', 'plan2_f2', 'plan2_f3', 'plan2_f4', 'plan2_f5'], ctaKey: 'plan2_cta', popular: true, gradient: 'from-primary/5 to-blue-50 dark:from-primary/10 dark:to-blue-900/10', border: 'border-primary/20 dark:border-primary/30' },
-  { nameKey: 'plan3_name', descKey: 'plan3_desc', priceKey: 'plan3_price', features: ['plan3_f1', 'plan3_f2', 'plan3_f3', 'plan3_f4', 'plan3_f5'], ctaKey: 'plan3_cta', popular: false, gradient: 'from-slate-900 to-slate-800 dark:from-slate-900 dark:to-slate-800', border: 'border-slate-700', dark: true },
+  { nameKey: 'plan3_name', descKey: 'plan3_desc', priceKey: 'plan3_price', features: ['plan3_f1', 'plan3_f2', 'plan3_f3', 'plan3_f4', 'plan3_f5'], ctaKey: 'plan3_cta', popular: false, gradient: 'from-slate-50 to-white dark:from-slate-900 dark:to-slate-900', border: 'border-slate-100 dark:border-slate-800' },
 ];
 
 const Tarifs = () => {

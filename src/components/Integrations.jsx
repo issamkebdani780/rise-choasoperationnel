@@ -1,62 +1,187 @@
-import React from 'react';
-import { useTranslation } from 'react-i18next';
+import React from "react";
+import { useTranslation } from "react-i18next";
+import {
+  MessageCircle,
+  FileSpreadsheet,
+  Truck,
+  FileText,
+  Zap,
+} from "lucide-react";
 
 const integrations = [
-  { name: 'WhatsApp', icon: '💬', color: 'bg-emerald-50 dark:bg-emerald-900/20 border-emerald-100 dark:border-emerald-800', text: 'text-emerald-600 dark:text-emerald-400', desc: 'Messages & confirmations' },
-  { name: 'Google Sheets', icon: '📊', color: 'bg-green-50 dark:bg-green-900/20 border-green-100 dark:border-green-800', text: 'text-green-600 dark:text-green-400', desc: 'Export & import données' },
-  { name: 'RiseConfirm', icon: '✅', color: 'bg-blue-50 dark:bg-blue-900/20 border-blue-100 dark:border-blue-800', text: 'text-primary', desc: 'Confirmation commandes' },
-  { name: 'RiseCart', icon: '🛒', color: 'bg-purple-50 dark:bg-purple-900/20 border-purple-100 dark:border-purple-800', text: 'text-purple-600 dark:text-purple-400', desc: 'Gestion panier' },
-  { name: 'API Transporteurs', icon: '🚚', color: 'bg-amber-50 dark:bg-amber-900/20 border-amber-100 dark:border-amber-800', text: 'text-amber-600 dark:text-amber-400', desc: 'Suivi livraisons' },
-  { name: 'Facturation', icon: '🧾', color: 'bg-slate-50 dark:bg-slate-800/50 border-slate-200 dark:border-slate-700', text: 'text-slate-600 dark:text-slate-400', desc: 'Factures internes' },
+  {
+    name: "WhatsApp",
+    icon: MessageCircle,
+    color: "text-emerald-500",
+    pos: "top-[5%] left-[20%]",
+    delay: "0s",
+  },
+  {
+    name: "Sheets",
+    icon: FileSpreadsheet,
+    color: "text-green-500",
+    pos: "top-[35%] left-[5%]",
+    delay: "0.2s",
+  },
+  {
+    name: "RiseConfirm",
+    img: "public/ecosystem/RiseConfirm.jpg", // Ensure extension is correct (.png/.svg)
+    pos: "bottom-[10%] left-[20%]",
+    delay: "0.4s",
+  },
+  {
+    name: "RiseCart",
+    img: "/ecosystem/risecart.jpg",
+    pos: "top-[5%] right-[20%]",
+    delay: "0.1s",
+  },
+  {
+    name: "Logistics",
+    icon: Truck,
+    color: "text-amber-500",
+    pos: "top-[35%] right-[5%]",
+    delay: "0.3s",
+  },
+  {
+    name: "Invoices",
+    icon: FileText,
+    color: "text-slate-500",
+    pos: "bottom-[10%] right-[20%]",
+    delay: "0.5s",
+  },
 ];
 
 const Integrations = () => {
   const { t } = useTranslation();
 
   return (
-    <section className="py-24 lg:py-32 bg-white dark:bg-slate-950 transition-colors duration-300">
-      <div className="container mx-auto px-6">
-        <div className="text-center mb-12">
-          <div className="inline-flex items-center gap-2 px-4 py-2 bg-blue-50 dark:bg-blue-900/20 border border-blue-100 dark:border-blue-800 rounded-full text-primary font-medium text-sm mb-6">
-            <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" /></svg>
-            Connecté
+    <section className="relative py-24 lg:py-36 bg-slate-50 dark:bg-slate-950 overflow-hidden transition-colors duration-500">
+      {/* Background Glow */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-blue-500/5 dark:bg-blue-600/10 rounded-full blur-[120px]" />
+      </div>
+
+      <div className="container relative mx-auto px-6">
+        <div className="max-w-4xl mx-auto">
+          <div className="text-center mb-20">
+            <div className="inline-flex items-center justify-center px-3 py-1 mb-4 bg-blue-100 dark:bg-blue-500/10 rounded-full">
+              <span className="text-[10px] font-black text-blue-600 dark:text-blue-400 uppercase tracking-[0.2em]">
+                Ecosystem
+              </span>
+            </div>
+            <h2 className="text-4xl lg:text-6xl font-black text-slate-900 dark:text-white tracking-tighter">
+              {t("integrations_title")}
+            </h2>
           </div>
-          <h2 className="text-3xl lg:text-5xl font-extrabold text-heading dark:text-white mb-4">
-            {t('integrations_title')}
-          </h2>
-          <p className="text-lg text-body dark:text-slate-400 max-w-xl mx-auto">
-            {t('integrations_sub')}
-          </p>
-        </div>
 
-        {/* Integration grid */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4">
-          {integrations.map((integ, i) => (
-            <div
-              key={i}
-              className={`flex flex-col items-center text-center gap-3 p-5 rounded-[20px] border ${integ.color} transition-all duration-300 hover:-translate-y-1 hover:shadow-md cursor-pointer group`}
-            >
-              <div className={`w-12 h-12 rounded-2xl ${integ.color} flex items-center justify-center text-2xl group-hover:scale-110 transition-transform`}>
-                {integ.icon}
-              </div>
-              <div>
-                <div className={`text-sm font-extrabold ${integ.text}`}>{integ.name}</div>
-                <div className="text-xs text-slate-400 mt-0.5">{integ.desc}</div>
-              </div>
-            </div>
-          ))}
-        </div>
+          {/* orbital Hub */}
+          <div className="relative h-[500px] w-full max-w-[700px] mx-auto flex items-center justify-center">
+            <div className="absolute w-[240px] h-[240px] border border-blue-500/20 dark:border-blue-400/10 rounded-full animate-[ping_4s_linear_infinite]" />
+            <div className="absolute w-[400px] h-[400px] border border-slate-200 dark:border-white/5 rounded-full hidden md:block" />
 
-        {/* Center connector visual */}
-        <div className="mt-12 flex justify-center">
-          <div className="relative bg-gradient-to-r from-primary/5 to-blue-50 dark:from-primary/10 dark:to-blue-900/10 rounded-[24px] border border-blue-100 dark:border-blue-800/30 px-8 py-6 flex items-center gap-4 max-w-md">
-            <div className="w-12 h-12 bg-primary rounded-2xl flex items-center justify-center shadow-lg shadow-primary/30 shrink-0">
-              <svg className="w-7 h-7 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 17V7m0 10a2 2 0 01-2 2H5a2 2 0 01-2-2V7a2 2 0 012-2h2a2 2 0 012 2m0 10a2 2 0 002 2h2a2 2 0 002-2M9 7a2 2 0 012-2h2a2 2 0 012 2m0 10V7m0 10a2 2 0 002 2h2a2 2 0 002-2V7a2 2 0 00-2-2h-2a2 2 0 00-2 2" /></svg>
+            {/* Floating Nodes */}
+            {integrations.map((item, i) => {
+              const Icon = item.icon;
+              return (
+                <div
+                  key={i}
+                  className={`absolute ${item.pos} animate-bounce transition-all duration-1000 hidden md:flex flex-col items-center gap-3 group`}
+                  style={{
+                    animationDuration: "4s",
+                    animationDelay: item.delay,
+                  }}
+                >
+                  <div className="relative">
+                    <div className="absolute inset-0 bg-blue-500/20 blur-xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity" />
+
+                    <div
+                      className="
+                      relative w-16 h-16 rounded-[22px] bg-white dark:bg-slate-900 
+                      border border-slate-200 dark:border-white/10
+                      shadow-xl shadow-slate-200/50 dark:shadow-none flex items-center justify-center
+                      group-hover:scale-110 group-hover:border-blue-500 group-hover:-rotate-3 transition-all cursor-pointer
+                      overflow-hidden
+                    "
+                    >
+                      {item.img ? (
+                        <img
+                          src={item.img}
+                          alt={item.name}
+                          className=" object-contain"
+                        />
+                      ) : (
+                        <Icon
+                          className={`${item.color} group-hover:scale-110 transition-transform`}
+                          size={24}
+                          strokeWidth={1.5}
+                        />
+                      )}
+                    </div>
+                  </div>
+                  <span className="text-[10px] font-black uppercase tracking-widest text-slate-400 dark:text-slate-500 opacity-0 group-hover:opacity-100 transition-opacity">
+                    {item.name}
+                  </span>
+                </div>
+              );
+            })}
+
+            {/* Core Center Piece */}
+            <div className="relative z-10 text-center">
+              <div className="group cursor-pointer">
+                <div
+                  className="
+    w-32 h-32 rounded-[40px] bg-slate-900 dark:bg-white 
+    shadow-[0_20px_50px_rgba(0,0,0,0.2)] dark:shadow-[0_20px_50px_rgba(255,255,255,0.1)]
+    flex items-center justify-center transition-transform group-hover:scale-105 duration-500
+  "
+                >
+                  <img
+                    src="/ecosystem/risemanager.png"
+                    alt="RiseManager Core"
+                    className="w-16 h-16 object-contain"
+                  />
+                </div>
+              </div>
+
+              <div className="absolute top-full mt-8 left-1/2 -translate-x-1/2 whitespace-nowrap text-center">
+                <div className="text-2xl font-black text-slate-900 dark:text-white tracking-tighter">
+                  RiseManager
+                </div>
+                <div className="flex items-center justify-center gap-2 mt-1">
+                  <span className="w-1.5 h-1.5 rounded-full bg-blue-500 animate-pulse" />
+                  <span className="text-[10px] font-bold text-blue-600 dark:text-blue-400 uppercase tracking-[0.2em]">
+                    Unified Ecosystem
+                  </span>
+                </div>
+              </div>
             </div>
-            <div>
-              <div className="text-base font-black text-heading dark:text-white">RiseManager</div>
-              <div className="text-sm text-body dark:text-slate-400">Hub central de votre écosystème</div>
-            </div>
+          </div>
+
+          {/* Mobile Layout */}
+          <div className="grid grid-cols-2 gap-4 mt-10 md:hidden">
+            {integrations.map((item, i) => (
+              <div
+                key={i}
+                className="bg-white dark:bg-slate-900 p-6 rounded-3xl border border-slate-100 dark:border-white/5 flex flex-col items-center gap-3 shadow-sm"
+              >
+                <div
+                  className={`p-3 rounded-2xl bg-slate-50 dark:bg-white/5 flex items-center justify-center w-14 h-14`}
+                >
+                  {item.img ? (
+                    <img
+                      src={item.img}
+                      alt={item.name}
+                      className="w-8 h-8 object-contain"
+                    />
+                  ) : (
+                    <item.icon className={item.color} size={24} />
+                  )}
+                </div>
+                <span className="text-[10px] font-black text-slate-500 dark:text-slate-400 uppercase tracking-widest">
+                  {item.name}
+                </span>
+              </div>
+            ))}
           </div>
         </div>
       </div>
