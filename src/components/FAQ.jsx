@@ -57,17 +57,6 @@ const FAQ = () => {
             </div>
           ))}
         </div>
-
-        {/* Still have questions */}
-        <div className="mt-12 text-center">
-          <div className="inline-block bg-white dark:bg-slate-900 rounded-[20px] border border-slate-100 dark:border-slate-800 px-8 py-6 shadow-sm">
-            <p className="text-base font-bold text-heading dark:text-white mb-2">Vous avez d'autres questions ?</p>
-            <p className="text-sm text-body dark:text-slate-400 mb-4">Notre équipe répond en moins de 2h.</p>
-            <a href="#lead-form" className="inline-flex items-center gap-2 px-6 py-3 bg-primary hover:bg-primary-hover text-white rounded-xl font-bold text-sm transition-all active:scale-95">
-              Nous contacter
-            </a>
-          </div>
-        </div>
       </div>
     </section>
   );
