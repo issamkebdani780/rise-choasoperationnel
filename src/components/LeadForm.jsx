@@ -175,7 +175,7 @@ const LeadForm = () => {
               {/* Submit */}
               <button
                 type="submit"
-                className="w-full py-5 bg-primary hover:bg-primary-hover text-white rounded-2xl font-extrabold text-base shadow-xl shadow-primary/25 transition-all hover:-translate-y-0.5 active:scale-95 flex items-center justify-center gap-3"
+                className="w-full p-5 bg-primary hover:bg-primary-hover text-white rounded-2xl font-extrabold text-base shadow-xl shadow-primary/25 transition-all hover:-translate-y-0.5 active:scale-95 flex items-center justify-center gap-3"
               >
                 {t('form_btn')}
                 <svg className="w-5 h-5 rtl:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -184,7 +184,7 @@ const LeadForm = () => {
               </button>
 
               <p className="text-center text-xs text-slate-400 pt-1">
-                🔒 Vos données sont confidentielles. Aucun spam.
+                Vos données sont confidentielles. Aucun spam.
               </p>
             </form>
           )}
