@@ -38,13 +38,13 @@ const Promesse = () => {
         <div className="text-center mb-20">
           <div className="inline-flex items-center gap-2 px-3 py-1 bg-blue-50 dark:bg-blue-500/10 border border-blue-100 dark:border-blue-500/20 rounded-full text-blue-600 dark:text-blue-400 font-bold text-[10px] uppercase tracking-widest mb-6">
             <Zap size={12} className="fill-current" />
-            La Solution
+            {t('promise_badge')}
           </div>
           <h2 className="text-4xl lg:text-6xl font-black text-slate-900 dark:text-white mb-6 tracking-tight">
             {t('promise_title')}
           </h2>
           <p className="text-lg text-slate-600 dark:text-slate-400 max-w-2xl mx-auto font-medium">
-            Si tout passe par toi, ce n'est pas une entreprise. C'est un emploi auto-géré.
+            {t('promise_subtitle')}
           </p>
         </div>
 
@@ -77,7 +77,7 @@ const Promesse = () => {
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
                     </svg>
                   </div>
-                  <span className="text-[10px] font-black text-slate-400 dark:text-slate-500 uppercase tracking-widest">Standard Pack</span>
+                  <span className="text-[10px] font-black text-slate-400 dark:text-slate-500 uppercase tracking-widest">{t('promise_pack')}</span>
                 </div>
               </div>
             );
@@ -93,10 +93,10 @@ const Promesse = () => {
           
           <div className="relative z-10 text-center lg:text-left">
             <h3 className="text-3xl lg:text-4xl font-black dark:text-white text-slate-900 mb-2 tracking-tighter">
-              Tu n'as pas besoin de plus de ventes.
+              {t('promise_hook_1')}
             </h3>
             <p className="dark:text-slate-400 text-slate-500 font-bold text-lg uppercase tracking-widest">
-              Tu as besoin d'ordre.
+              {t('promise_hook_2')}
             </p>
           </div>
 

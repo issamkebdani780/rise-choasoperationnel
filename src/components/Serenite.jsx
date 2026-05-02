@@ -44,13 +44,13 @@ const Serenite = () => {
             <div>
               <div className="inline-flex items-center gap-2 px-3 py-1 bg-emerald-50 dark:bg-emerald-500/10 border border-emerald-100 dark:border-emerald-500/20 rounded-full text-emerald-600 dark:text-emerald-400 font-bold text-[10px] uppercase tracking-widest mb-6">
                 <ShieldCheck size={14} />
-                Sérénité Dirigeant
+                {t('serenity_badge')}
               </div>
               <h2 className="text-4xl lg:text-6xl font-black text-slate-900 dark:text-white mb-6 leading-tight tracking-tight">
                 {t('serenity_title')}
               </h2>
               <p className="text-lg text-slate-600 dark:text-slate-400 font-medium leading-relaxed">
-                Un dirigeant reposé prend de meilleures décisions. RiseManager vous rend cette tranquillité d'esprit en automatisant la surveillance de vos flux.
+                {t('serenity_desc')}
               </p>
             </div>
 
@@ -96,23 +96,23 @@ const Serenite = () => {
                       <LayoutDashboard size={18} className="text-blue-600" />
                     </div>
                     <div>
-                      <div className="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em]">Live Monitoring</div>
-                      <div className="text-xl font-black text-slate-900 dark:text-white leading-none mt-1">Vue d'ensemble</div>
+                      <div className="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em]">{t('serenity_live')}</div>
+                      <div className="text-xl font-black text-slate-900 dark:text-white leading-none mt-1">{t('serenity_overview')}</div>
                     </div>
                   </div>
                   <div className="flex items-center gap-2 bg-emerald-50 dark:bg-emerald-500/10 px-4 py-2 rounded-full border border-emerald-100 dark:border-emerald-500/20">
                     <div className="w-2 h-2 bg-emerald-500 rounded-full animate-pulse shadow-[0_0_8px_#10b981]" />
-                    <span className="text-[10px] font-black text-emerald-600 dark:text-emerald-400 uppercase tracking-widest">Opérationnel</span>
+                    <span className="text-[10px] font-black text-emerald-600 dark:text-emerald-400 uppercase tracking-widest">{t('serenity_op')}</span>
                   </div>
                 </div>
 
                 {/* Metrics Grid */}
                 <div className="grid grid-cols-2 gap-4">
                   {[
-                    { label: 'Urgences', val: '0', color: 'text-emerald-500', trend: '↓ 100%' },
-                    { label: 'Décisions', val: '12', color: 'text-blue-600', trend: 'Automatisé' },
-                    { label: 'Autonomie', val: '94%', color: 'text-purple-600', trend: 'Optimal' },
-                    { label: 'Temps Libéré', val: '+4.2h', color: 'text-amber-500', trend: 'Journalier' },
+                    { label: t('serenity_kpi_1'), val: '0', color: 'text-emerald-500', trend: '↓ 100%' },
+                    { label: t('serenity_kpi_2'), val: '12', color: 'text-blue-600', trend: t('serenity_trend_1') },
+                    { label: t('serenity_kpi_3'), val: '94%', color: 'text-purple-600', trend: t('serenity_trend_2') },
+                    { label: t('serenity_kpi_4'), val: '+4.2h', color: 'text-amber-500', trend: t('serenity_trend_3') },
                   ].map((m, i) => (
                     <div key={i} className="bg-slate-50 dark:bg-white/[0.03] border border-slate-100 dark:border-white/5 rounded-[24px] p-5 hover:bg-white dark:hover:bg-white/5 transition-colors group/metric">
                       <div className={`text-3xl font-black mb-1 tracking-tighter ${m.color}`}>{m.val}</div>
@@ -128,11 +128,11 @@ const Serenite = () => {
                     <Sparkles size={40} className="text-white" />
                   </div>
                   <p className="text-sm font-bold text-white italic leading-relaxed">
-                    "Je ne vérifie plus mon téléphone toutes les 5 minutes. Tout est fluide."
+                    "{t('serenity_quote')}"
                   </p>
                   <div className="flex items-center gap-2 mt-4">
                     <div className="w-1.5 h-1.5 rounded-full bg-blue-500" />
-                    <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest">Issam K., Founder</p>
+                    <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest">{t('serenity_quote_author')}</p>
                   </div>
                 </div>
               </div>

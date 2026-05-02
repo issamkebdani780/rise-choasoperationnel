@@ -67,13 +67,13 @@ const Douleurs = () => {
         <div className="text-center mb-16">
           <div className="inline-flex items-center gap-2 px-4 py-2 bg-red-50 dark:bg-red-900/20 border border-red-100 dark:border-red-800 rounded-full text-red-600 dark:text-red-400 font-medium text-sm mb-6">
             <div className="w-1.5 h-1.5 rounded-full bg-red-500 animate-pulse" />
-            Reconnaissez-vous ces situations ?
+            {t('pain_badge')}
           </div>
           <h2 className="text-3xl lg:text-5xl font-extrabold text-heading dark:text-white mb-4">
             {t('pain_title')}
           </h2>
           <p className="text-lg text-body dark:text-slate-400 max-w-2xl mx-auto">
-            Chaque heure de chaos non maîtrisé est une perte directe sur votre marge.
+            {t('pain_subtitle')}
           </p>
         </div>
 
@@ -112,7 +112,7 @@ const Douleurs = () => {
         <div className="mt-16 text-center">
           <div className="inline-block bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800 rounded-2xl px-8 py-5 shadow-sm">
             <p className="text-lg font-bold text-heading dark:text-white italic">
-              "Le chaos interne ruine plus d'entreprises que la concurrence."
+              "{t('pain_hook')}"
             </p>
           </div>
         </div>

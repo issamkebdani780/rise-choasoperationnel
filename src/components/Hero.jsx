@@ -125,7 +125,7 @@ const Hero = () => {
             {/* Badge */}
             <div className="inline-flex items-center gap-2 px-4 py-2 bg-blue-50 dark:bg-blue-900/20 border border-blue-100 dark:border-blue-800 rounded-full text-primary font-medium text-sm animate-slide-up" style={{ animationDelay: '0.1s' }}>
               <div className="w-2 h-2 rounded-full bg-primary animate-pulse-slow" />
-              Stop au chaos opérationnel
+              {t('hero_badge')}
             </div>
 
             {/* H1 */}
@@ -151,14 +151,14 @@ const Hero = () => {
 
             {/* Trust */}
             <div className="flex flex-wrap items-center gap-x-6 gap-y-3 pt-2 animate-slide-up" style={{ animationDelay: '0.4s' }}>
-              {['Sans carte bancaire', 'Mise en route rapide', 'Support dédié'].map((point, i) => (
+              {['hero_trust_1', 'hero_trust_2', 'hero_trust_3'].map((key, i) => (
                 <div key={i} className="flex items-center gap-2 text-sm font-medium text-slate-600 dark:text-slate-400">
                   <div className="w-5 h-5 rounded-full bg-blue-50 dark:bg-blue-900/20 flex items-center justify-center border border-blue-100 dark:border-blue-800">
                     <svg className="w-3 h-3 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
                     </svg>
                   </div>
-                  {point}
+                  {t(key)}
                 </div>
               ))}
             </div>
@@ -193,7 +193,7 @@ const Hero = () => {
                 <div className="flex items-center gap-2">
                   <div className={`w-2 h-2 rounded-full ${activeTab === 'after' ? 'bg-emerald-500' : 'bg-red-500'} animate-pulse-slow`} />
                   <span className="text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-widest">
-                    {activeTab === 'after' ? 'RiseManager' : 'Situation actuelle'}
+                    {activeTab === 'after' ? t('hero_risemanager') : t('hero_status_label')}
                   </span>
                 </div>
                 <div className="flex items-center gap-1.5">
@@ -209,9 +209,9 @@ const Hero = () => {
                 {activeTab === 'after' && (
                   <div className="grid grid-cols-3 gap-3">
                     {[
-                      { label: 'Commandes', val: '1,247', delta: '+12%', color: 'text-primary', bg: 'bg-blue-50 dark:bg-blue-900/20', spark: [40,55,45,70,60,80,75], sparkColor: '#3b82f6' },
-                      { label: 'En stock',  val: '98%',   delta: '+2%',  color: 'text-emerald-500', bg: 'bg-emerald-50 dark:bg-emerald-900/20', spark: [60,65,70,68,75,80,78], sparkColor: '#10b981' },
-                      { label: 'Agents',    val: '12',    delta: 'En ligne', color: 'text-purple-500', bg: 'bg-purple-50 dark:bg-purple-900/20', spark: [4,6,5,8,7,10,12], sparkColor: '#a855f7' },
+                      { label: t('hero_col_orders'), val: '1,247', delta: '+12%', color: 'text-primary', bg: 'bg-blue-50 dark:bg-blue-900/20', spark: [40,55,45,70,60,80,75], sparkColor: '#3b82f6' },
+                      { label: t('hero_col_stock'),  val: '98%',   delta: '+2%',  color: 'text-emerald-500', bg: 'bg-emerald-50 dark:bg-emerald-900/20', spark: [60,65,70,68,75,80,78], sparkColor: '#10b981' },
+                      { label: t('hero_col_agents'),    val: '12',    delta: t('hero_col_online'), color: 'text-purple-500', bg: 'bg-purple-50 dark:bg-purple-900/20', spark: [4,6,5,8,7,10,12], sparkColor: '#a855f7' },
                     ].map((m, i) => (
                       <div key={i} className={`${m.bg} rounded-2xl p-3`}>
                         <div className="text-[9px] font-bold text-slate-400 uppercase tracking-wider mb-1">{m.label}</div>
@@ -232,10 +232,10 @@ const Hero = () => {
                       <IconAlert />
                     </div>
                     <div>
-                      <div className="text-xs font-bold text-red-600 dark:text-red-400">Surcharge mentale</div>
-                      <div className="text-[10px] text-red-400 dark:text-red-500">Aucune visibilité globale</div>
+                      <div className="text-xs font-bold text-red-600 dark:text-red-400">{t('hero_mental_overload')}</div>
+                      <div className="text-[10px] text-red-400 dark:text-red-500">{t('hero_no_visibility')}</div>
                     </div>
-                    <div className="ml-auto text-[10px] font-bold text-red-300 dark:text-red-600 bg-red-100 dark:bg-red-900/40 px-2 py-0.5 rounded-full">Critique</div>
+                    <div className="ml-auto text-[10px] font-bold text-red-300 dark:text-red-600 bg-red-100 dark:bg-red-900/40 px-2 py-0.5 rounded-full">{t('hero_critical')}</div>
                   </div>
                 )}
 
@@ -259,12 +259,12 @@ const Hero = () => {
                 {activeTab === 'after' && (
                   <div className="bg-slate-50 dark:bg-slate-800/50 rounded-2xl p-3">
                     <div className="flex items-center justify-between mb-2">
-                      <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider">Activité — 7 derniers jours</span>
-                      <span className="text-[9px] text-emerald-500 font-semibold">+34% vs semaine dernière</span>
+                      <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider">{t('hero_activity_label')}</span>
+                      <span className="text-[9px] text-emerald-500 font-semibold">{t('hero_activity_stat')}</span>
                     </div>
                     <BarChart data={[42, 58, 51, 73, 65, 89, 94]} color="#3b82f6" />
                     <div className="flex justify-between mt-1">
-                      {['L','M','M','J','V','S','D'].map((d,i) => (
+                      {[t('hero_day_mon'), t('hero_day_tue'), t('hero_day_wed'), t('hero_day_thu'), t('hero_day_fri'), t('hero_day_sat'), t('hero_day_sun')].map((d, i) => (
                         <span key={i} className="flex-1 text-center text-[8px] text-slate-400">{d}</span>
                       ))}
                     </div>
@@ -275,7 +275,7 @@ const Hero = () => {
                 {activeTab === 'before' && (
                   <div className="flex items-center gap-2 text-[10px] text-slate-400 dark:text-slate-600 border-t border-slate-100 dark:border-slate-800 pt-3">
                     <div className="w-1.5 h-1.5 rounded-full bg-orange-400 animate-pulse" />
-                    3 onglets Excel ouverts &nbsp;·&nbsp; 47 messages non lus &nbsp;·&nbsp; 0 tableau de bord
+                    {t('hero_chaos_footer')}
                   </div>
                 )}
               </div>
@@ -292,8 +292,8 @@ const Hero = () => {
                 </svg>
               </div>
               <div>
-                <div className="text-[10px] font-bold text-slate-400 uppercase">Commandes</div>
-                <div className="text-sm font-black text-heading dark:text-white">+1,247 confirmées</div>
+                <div className="text-[10px] font-bold text-slate-400 uppercase">{t('hero_orders')}</div>
+                <div className="text-sm font-black text-heading dark:text-white">{t('hero_orders_confirmed')}</div>
               </div>
             </div>
 
@@ -308,8 +308,8 @@ const Hero = () => {
                 </svg>
               </div>
               <div>
-                <div className="text-[10px] font-bold text-slate-400 uppercase">Productivité</div>
-                <div className="text-sm font-black text-emerald-500">+340%</div>
+                <div className="text-[10px] font-bold text-slate-400 uppercase">{t('hero_productivity')}</div>
+                <div className="text-sm font-black text-emerald-500">{t('hero_productivity_stat')}</div>
               </div>
             </div>
           </div>

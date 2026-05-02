@@ -64,14 +64,14 @@ const Footer = () => {
           <div className="lg:col-span-7 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
             {/* Produit */}
             <div className="space-y-6">
-              <div className="text-[10px] font-black text-primary uppercase tracking-[0.2em]">Produit</div>
+              <div className="text-[10px] font-black text-primary uppercase tracking-[0.2em]">{t('footer_product')}</div>
               <ul className="space-y-4">
                 {[
-                  ['Organisation', '#douleurs'],
-                  ['Fonctionnalités', '#promesse'],
-                  ['Dashboard', '#dashboard'],
-                  ['Automatisations', '#'],
-                  ['Intégrations', '#integrations'],
+                  [t('nav_org'), '#douleurs'],
+                  [t('nav_feat'), '#promesse'],
+                  [t('dash_tab1'), '#dashboard'],
+                  [t('dash_tab5'), '#'],
+                  [t('integrations_title'), '#integrations'],
                 ].map(([label, href]) => (
                   <li key={label}>
                     <a href={href} className="text-sm font-bold text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors uppercase tracking-tight">{label}</a>
@@ -82,7 +82,7 @@ const Footer = () => {
 
             {/* Écosystème */}
             <div className="space-y-6">
-              <div className="text-[10px] font-black text-primary uppercase tracking-[0.2em]">Écosystème</div>
+              <div className="text-[10px] font-black text-primary uppercase tracking-[0.2em]">{t('footer_ecosystem')}</div>
               <ul className="space-y-4">
                 {['RiseCart', 'RiseConfirm', 'FBR Network', 'RiseAcademy', 'RisePay'].map(link => (
                   <li key={link}>
@@ -97,7 +97,7 @@ const Footer = () => {
 
             {/* Contact Direct */}
             <div className="space-y-6">
-              <div className="text-[10px] font-black text-primary uppercase tracking-[0.2em]">Contact Direct</div>
+              <div className="text-[10px] font-black text-primary uppercase tracking-[0.2em]">{t('footer_contact')}</div>
               <div className="flex flex-col gap-4">
                 <a
                   href="https://maps.app.goo.gl/AZj6LiEoxejWRuq5A"
@@ -109,8 +109,8 @@ const Footer = () => {
                     <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" /><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
                   </div>
                   <div className="min-w-0">
-                    <div className="text-[10px] font-bold text-slate-400 dark:text-slate-500 uppercase leading-none mb-1">Siège Social</div>
-                    <div className="text-sm font-bold text-slate-600 dark:text-white group-hover:text-primary transition-colors truncate">Oran, Algeria</div>
+                    <div className="text-[10px] font-bold text-slate-400 dark:text-slate-500 uppercase leading-none mb-1">{t('footer_hq')}</div>
+                    <div className="text-sm font-bold text-slate-600 dark:text-white group-hover:text-primary transition-colors truncate">{t('footer_location')}</div>
                   </div>
                 </a>
 
@@ -119,7 +119,7 @@ const Footer = () => {
                     <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>
                   </div>
                   <div className="min-w-0">
-                    <div className="text-[10px] font-bold text-slate-400 dark:text-slate-500 uppercase leading-none mb-1">Email</div>
+                    <div className="text-[10px] font-bold text-slate-400 dark:text-slate-500 uppercase leading-none mb-1">{t('footer_email')}</div>
                     <div className="text-xs sm:text-sm font-bold text-slate-600 dark:text-white group-hover:text-primary transition-colors truncate">contact@risemanager.com</div>
                   </div>
                 </a>
@@ -129,7 +129,7 @@ const Footer = () => {
                     <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" /></svg>
                   </div>
                   <div className="min-w-0">
-                    <div className="text-[10px] font-bold text-slate-400 dark:text-slate-500 uppercase leading-none mb-1">Support</div>
+                    <div className="text-[10px] font-bold text-slate-400 dark:text-slate-500 uppercase leading-none mb-1">{t('footer_support')}</div>
                     <div className="text-sm font-bold text-slate-600 dark:text-white group-hover:text-emerald-500 transition-colors">0665584456</div>
                   </div>
                 </a>
@@ -141,10 +141,10 @@ const Footer = () => {
         {/* ── Trust Signals Bar ── */}
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 py-10 border border-slate-100 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-900/50 rounded-[32px] px-8 mb-12">
           {[
-            { label: 'Intégrations Natives', icon: 'M13 10V3L4 14h7v7l9-11h-7z' },
-            { label: 'Support Local (DZ)', icon: 'M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z' },
-            { label: 'Données Sécurisées', icon: 'M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z' },
-            { label: 'Infrastructure Sérieuse', icon: 'M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5' },
+            { label: t('footer_signal_1'), icon: 'M13 10V3L4 14h7v7l9-11h-7z' },
+            { label: t('footer_signal_2'), icon: 'M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z' },
+            { label: t('footer_signal_3'), icon: 'M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z' },
+            { label: t('footer_signal_4'), icon: 'M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5' },
           ].map((signal, i) => (
             <div key={i} className="flex flex-col items-center lg:items-start gap-2 group">
               <div className="text-primary/70 group-hover:text-primary transition-colors">
@@ -163,9 +163,9 @@ const Footer = () => {
             &copy; {year} RiseManager. {t('footer_rights')}
           </div>
           <div className="flex flex-wrap items-center justify-center gap-x-8 gap-y-2">
-            <a href="#" className="text-[11px] font-black text-slate-400 hover:text-primary transition-colors uppercase tracking-[0.1em]">Mentions Légales</a>
-            <a href="#" className="text-[11px] font-black text-slate-400 hover:text-primary transition-colors uppercase tracking-[0.1em]">Confidentialité</a>
-            <a href="#" className="text-[11px] font-black text-slate-400 hover:text-primary transition-colors uppercase tracking-[0.1em]">CGV</a>
+            <a href="#" className="text-[11px] font-black text-slate-400 hover:text-primary transition-colors uppercase tracking-[0.1em]">{t('footer_legal')}</a>
+            <a href="#" className="text-[11px] font-black text-slate-400 hover:text-primary transition-colors uppercase tracking-[0.1em]">{t('footer_privacy')}</a>
+            <a href="#" className="text-[11px] font-black text-slate-400 hover:text-primary transition-colors uppercase tracking-[0.1em]">{t('footer_terms')}</a>
           </div>
         </div>
       </div>

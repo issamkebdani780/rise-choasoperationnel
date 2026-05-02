@@ -14,61 +14,61 @@ import {
 const integrations = [
   {
     name: "WhatsApp",
-    desc: "Messages & notifications automatiques",
+    desc: "int_whatsapp_desc",
     icon: MessageCircle,
     color: "text-emerald-500",
     bg: "bg-emerald-50 dark:bg-emerald-500/10",
     border: "border-emerald-100 dark:border-emerald-500/20",
     glow: "group-hover:shadow-emerald-200/40 dark:group-hover:shadow-emerald-500/10",
-    tag: "Messagerie",
+    tag: "int_tag_msg",
   },
   {
     name: "Google Sheets",
-    desc: "Sync bidirectionnelle en temps réel",
+    desc: "int_gsheets_desc",
     icon: FileSpreadsheet,
     color: "text-green-500",
     bg: "bg-green-50 dark:bg-green-500/10",
     border: "border-green-100 dark:border-green-500/20",
     glow: "group-hover:shadow-green-200/40 dark:group-hover:shadow-green-500/10",
-    tag: "Data",
+    tag: "int_tag_data",
   },
   {
     name: "RiseConfirm",
-    desc: "Confirmation de commandes vocale IA",
+    desc: "int_confirm_desc",
     img: "/ecosystem/RiseConfirm.jpg",
     bg: "bg-blue-50 dark:bg-blue-500/10",
     border: "border-blue-100 dark:border-blue-500/20",
     glow: "group-hover:shadow-blue-200/40 dark:group-hover:shadow-blue-500/10",
-    tag: "Rise Ecosystem",
+    tag: "int_tag_eco",
   },
   {
     name: "RiseCart",
-    desc: "Boutique e-commerce intégrée",
+    desc: "int_cart_desc",
     img: "/ecosystem/risecart.jpg",
     bg: "bg-indigo-50 dark:bg-indigo-500/10",
     border: "border-indigo-100 dark:border-indigo-500/20",
     glow: "group-hover:shadow-indigo-200/40 dark:group-hover:shadow-indigo-500/10",
-    tag: "Rise Ecosystem",
+    tag: "int_tag_eco",
   },
   {
     name: "Logistics",
-    desc: "Yalidine, ZR Express, Maystro",
+    desc: "int_logistics_desc",
     icon: Truck,
     color: "text-amber-500",
     bg: "bg-amber-50 dark:bg-amber-500/10",
     border: "border-amber-100 dark:border-amber-500/20",
     glow: "group-hover:shadow-amber-200/40 dark:group-hover:shadow-amber-500/10",
-    tag: "Livraison",
+    tag: "int_tag_log",
   },
   {
     name: "Factures",
-    desc: "Génération & export automatique",
+    desc: "int_factures_desc",
     icon: FileText,
     color: "text-slate-500",
     bg: "bg-slate-100 dark:bg-slate-500/10",
     border: "border-slate-200 dark:border-slate-500/20",
     glow: "group-hover:shadow-slate-200/40 dark:group-hover:shadow-slate-500/10",
-    tag: "Finance",
+    tag: "int_tag_fin",
   },
 ];
 
@@ -138,7 +138,7 @@ const Integrations = () => {
                   <div className="text-sm font-black text-heading dark:text-white tracking-tight">RiseManager</div>
                   <div className="flex items-center gap-1.5 justify-center mt-0.5">
                     <span className="w-1 h-1 rounded-full bg-primary" />
-                    <span className="text-[9px] font-bold text-primary uppercase tracking-[0.15em]">Hub Central</span>
+                    <span className="text-[9px] font-bold text-primary uppercase tracking-[0.15em]">{t('int_hub')}</span>
                   </div>
                 </div>
               </div>
@@ -176,7 +176,7 @@ const Integrations = () => {
                     {/* Tag */}
                     <div className="absolute top-4 right-4">
                       <span className="text-[9px] font-bold text-slate-400 dark:text-slate-600 uppercase tracking-widest bg-slate-50 dark:bg-slate-800/60 px-2 py-1 rounded-md">
-                        {item.tag}
+                        {t(item.tag)}
                       </span>
                     </div>
 
@@ -194,14 +194,14 @@ const Integrations = () => {
                       {item.name}
                     </h4>
                     <p className="text-[13px] text-slate-500 dark:text-slate-400 leading-relaxed mb-4">
-                      {item.desc}
+                      {t(item.desc)}
                     </p>
 
                     {/* Status */}
                     <div className="flex items-center gap-2">
                       <div className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
                       <span className="text-[10px] font-bold text-emerald-600 dark:text-emerald-400 uppercase tracking-wider">
-                        Connecté
+                        {t('int_connected')}
                       </span>
                       <ArrowRight className="w-3 h-3 text-slate-300 dark:text-slate-700 ml-auto group-hover:text-primary group-hover:translate-x-1 transition-all" />
                     </div>
@@ -223,7 +223,7 @@ const Integrations = () => {
               <div className="text-sm font-black text-heading dark:text-white">RiseManager</div>
               <div className="flex items-center gap-1.5 justify-center mt-1">
                 <span className="w-1 h-1 rounded-full bg-primary" />
-                <span className="text-[9px] font-bold text-primary uppercase tracking-widest">Hub Central</span>
+                <span className="text-[9px] font-bold text-primary uppercase tracking-widest">{t('int_hub')}</span>
               </div>
             </div>
           </div>
@@ -256,11 +256,11 @@ const Integrations = () => {
                     )}
                   </div>
                   <h4 className="text-sm font-bold text-heading dark:text-white mb-1">{item.name}</h4>
-                  <p className="text-[11px] text-slate-400 dark:text-slate-500 leading-snug">{item.desc}</p>
+                  <p className="text-[11px] text-slate-400 dark:text-slate-500 leading-snug">{t(item.desc)}</p>
 
                   <div className="flex items-center gap-1.5 mt-3 pt-3 border-t border-slate-50 dark:border-slate-800">
                     <div className="w-1 h-1 rounded-full bg-emerald-500" />
-                    <span className="text-[9px] font-bold text-emerald-600 dark:text-emerald-400 uppercase tracking-wider">Connecté</span>
+                    <span className="text-[9px] font-bold text-emerald-600 dark:text-emerald-400 uppercase tracking-wider">{t('int_connected')}</span>
                   </div>
                 </div>
               );
@@ -289,13 +289,13 @@ const Integrations = () => {
           <div className="relative z-10 text-center lg:text-left">
             <div className="flex items-center gap-2 justify-center lg:justify-start mb-3">
               <Link2 className="w-4 h-4 text-primary" />
-              <span className="text-[10px] font-bold text-primary uppercase tracking-widest">Plug & Play</span>
+              <span className="text-[10px] font-bold text-primary uppercase tracking-widest">{t('int_plug')}</span>
             </div>
             <h3 className="text-2xl lg:text-3xl font-extrabold text-heading dark:text-white mb-2 tracking-tight">
               {t("integrations_sub")}
             </h3>
             <p className="text-sm text-slate-500 dark:text-slate-400 font-medium">
-              Configuration en moins de 5 minutes. Aucune compétence technique requise.
+              {t('int_plug_desc')}
             </p>
           </div>
 

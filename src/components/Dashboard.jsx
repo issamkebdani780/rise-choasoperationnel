@@ -5,10 +5,10 @@ import { useTranslation } from 'react-i18next';
 const initialTabs = [
   { key: 'orders', descKey: 'dash_orders_desc', icon: '',
     content: [
-      { id: '#1247', status: 'Confirmée', client: 'Ahmed M.', agent: 'Sara', priority: 'high', amount: '3,200 DA' },
-      { id: '#1246', status: 'En cours', client: 'Fatima B.', agent: 'Karim', priority: 'med', amount: '1,850 DA' },
-      { id: '#1245', status: 'Livrée', client: 'Youssef T.', agent: 'Leila', priority: 'low', amount: '5,500 DA' },
-      { id: '#1244', status: 'Annulée', client: 'Nour A.', agent: 'Omar', priority: 'low', amount: '900 DA' },
+      { id: '#1247', status: 'dash_confirmed', client: 'Ahmed M.', agent: 'Sara', priority: 'high', amount: '3,200 DA' },
+      { id: '#1246', status: 'dash_pending', client: 'Fatima B.', agent: 'Karim', priority: 'med', amount: '1,850 DA' },
+      { id: '#1245', status: 'dash_delivered', client: 'Youssef T.', agent: 'Leila', priority: 'low', amount: '5,500 DA' },
+      { id: '#1244', status: 'dash_cancelled', client: 'Nour A.', agent: 'Omar', priority: 'low', amount: '900 DA' },
     ]
   },
   { key: 'stock', descKey: 'dash_stock_desc', icon: '',
@@ -49,10 +49,10 @@ const initialTabs = [
 ];
 
 const statusColor = {
-  'Confirmée': 'bg-emerald-100 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-400',
-  'En cours': 'bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-400',
-  'Livrée': 'bg-slate-100 text-slate-600 dark:bg-slate-800 dark:text-slate-400',
-  'Annulée': 'bg-red-100 text-red-700 dark:bg-red-900/30 dark:text-red-400',
+  'dash_confirmed': 'bg-emerald-100 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-400',
+  'dash_pending': 'bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-400',
+  'dash_delivered': 'bg-slate-100 text-slate-600 dark:bg-slate-800 dark:text-slate-400',
+  'dash_cancelled': 'bg-red-100 text-red-700 dark:bg-red-900/30 dark:text-red-400',
 };
 const priorityColor = { high: 'bg-red-500', med: 'bg-amber-400', low: 'bg-slate-300 dark:bg-slate-600' };
 const stockColor = { ok: 'text-emerald-500', low: 'text-amber-500', empty: 'text-red-500' };
@@ -183,10 +183,10 @@ const Dashboard = () => {
         <div className="text-center mb-12">
           <div className="inline-flex items-center gap-2 px-4 py-2 bg-blue-50 dark:bg-blue-900/20 border border-blue-100 dark:border-blue-800 rounded-full text-primary font-medium text-sm mb-6">
             <div className="w-2 h-2 rounded-full bg-primary animate-pulse-slow" />
-            Démo interactive
+            {t('demo_interactive')}
           </div>
           <h2 className="text-3xl lg:text-5xl font-extrabold text-heading dark:text-white mb-4">{t('dash_title')}</h2>
-          <p className="text-lg text-body dark:text-slate-400">Explorez chaque module du système.</p>
+          <p className="text-lg text-body dark:text-slate-400">{t('demo_explore')}</p>
         </div>
 
         <div className="bg-white dark:bg-slate-900 rounded-[24px] sm:rounded-[32px] border border-slate-100 dark:border-slate-800 shadow-xl overflow-hidden">
@@ -229,7 +229,7 @@ const Dashboard = () => {
                   className="px-4 py-2.5 bg-primary text-white rounded-xl text-sm font-bold hover:bg-primary-hover transition-colors flex items-center justify-center gap-2 shrink-0"
                 >
                   <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" /></svg>
-                  <span className="sm:inline">+ Nouveau</span>
+                  <span className="sm:inline">{t('btn_new')}</span>
                 </button>
               </div>
             )}
@@ -242,12 +242,12 @@ const Dashboard = () => {
                   <table className="w-full">
                     <thead>
                       <tr className="text-left rtl:text-right">
-                        <th className="text-xs font-bold text-slate-400 uppercase tracking-wider pb-3 pr-4 rtl:pr-0 rtl:pl-4">ID</th>
-                        <th className="text-xs font-bold text-slate-400 uppercase tracking-wider pb-3 pr-4 rtl:pr-0 rtl:pl-4">Client</th>
-                        <th className="text-xs font-bold text-slate-400 uppercase tracking-wider pb-3 pr-4 rtl:pr-0 rtl:pl-4">Agent</th>
-                        <th className="text-xs font-bold text-slate-400 uppercase tracking-wider pb-3 pr-4 rtl:pr-0 rtl:pl-4">Statut</th>
-                        <th className="text-xs font-bold text-slate-400 uppercase tracking-wider pb-3">Montant</th>
-                        <th className="text-xs font-bold text-slate-400 uppercase tracking-wider pb-3 w-16">Actions</th>
+                        <th className="text-xs font-bold text-slate-400 uppercase tracking-wider pb-3 pr-4 rtl:pr-0 rtl:pl-4">{t('dash_col_id')}</th>
+                        <th className="text-xs font-bold text-slate-400 uppercase tracking-wider pb-3 pr-4 rtl:pr-0 rtl:pl-4">{t('dash_col_client')}</th>
+                        <th className="text-xs font-bold text-slate-400 uppercase tracking-wider pb-3 pr-4 rtl:pr-0 rtl:pl-4">{t('dash_col_agent')}</th>
+                        <th className="text-xs font-bold text-slate-400 uppercase tracking-wider pb-3 pr-4 rtl:pr-0 rtl:pl-4">{t('dash_col_status')}</th>
+                        <th className="text-xs font-bold text-slate-400 uppercase tracking-wider pb-3">{t('dash_col_amount')}</th>
+                        <th className="text-xs font-bold text-slate-400 uppercase tracking-wider pb-3 w-16">{t('dash_col_actions')}</th>
                       </tr>
                     </thead>
                     <tbody className="divide-y divide-slate-50 dark:divide-slate-800">
@@ -255,7 +255,7 @@ const Dashboard = () => {
                         <tr>
                           <td colSpan={6} className="py-8 text-center text-slate-400">
                             <svg className="w-12 h-12 mx-auto mb-3 text-slate-300 dark:text-slate-600" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
-                            <p>Aucune commande trouvée</p>
+                            <p>{t('dash_no_orders')}</p>
                           </td>
                         </tr>
                       ) : (
@@ -270,14 +270,14 @@ const Dashboard = () => {
                             <td className="py-3 pr-4 rtl:pr-0 rtl:pl-4 text-sm text-body dark:text-slate-300">{row.client}</td>
                             <td className="py-3 pr-4 rtl:pr-0 rtl:pl-4 text-sm text-body dark:text-slate-300">{row.agent}</td>
                             <td className="py-3 pr-4 rtl:pr-0 rtl:pl-4">
-                              <span className={`inline-flex items-center px-2.5 py-1 rounded-lg text-xs font-bold ${statusColor[row.status]}`}>{row.status}</span>
+                              <span className={`inline-flex items-center px-2.5 py-1 rounded-lg text-xs font-bold ${statusColor[row.status]}`}>{t(row.status)}</span>
                             </td>
                             <td className="py-3 text-sm font-bold text-heading dark:text-white">{row.amount}</td>
                             <td className="py-3">
                               <button 
                                 onClick={() => handleDeleteItem(currentTab.content.indexOf(row))}
                                 className="p-2 text-slate-400 hover:text-red-500 opacity-0 group-hover:opacity-100 transition-all"
-                                title="Supprimer"
+                                title={t('btn_delete')}
                               >
                                 <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" /></svg>
                               </button>
@@ -294,7 +294,7 @@ const Dashboard = () => {
                   {filteredContent.length === 0 ? (
                     <div className="py-8 text-center text-slate-400">
                       <svg className="w-12 h-12 mx-auto mb-3 text-slate-300 dark:text-slate-600" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
-                      <p>Aucune commande trouvée</p>
+                      <p>{t('dash_no_orders')}</p>
                     </div>
                   ) : (
                     filteredContent.map((row, i) => (
@@ -304,7 +304,7 @@ const Dashboard = () => {
                             <div className={`w-2 h-2 rounded-full ${priorityColor[row.priority]}`} />
                             <span className="text-sm font-mono font-bold text-heading dark:text-white">{row.id}</span>
                           </div>
-                          <span className={`inline-flex items-center px-2.5 py-1 rounded-lg text-xs font-bold ${statusColor[row.status]}`}>{row.status}</span>
+                          <span className={`inline-flex items-center px-2.5 py-1 rounded-lg text-xs font-bold ${statusColor[row.status]}`}>{t(row.status)}</span>
                         </div>
                         <div className="flex items-center justify-between text-sm">
                           <div>
@@ -327,7 +327,7 @@ const Dashboard = () => {
                 {filteredContent.length === 0 ? (
                   <div className="py-12 text-center text-slate-400">
                     <svg className="w-12 h-12 mx-auto mb-3 text-slate-300 dark:text-slate-600" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" /></svg>
-                    <p>Aucun produit trouvé</p>
+                    <p>{t('dash_no_stock')}</p>
                   </div>
                 ) : (
                   filteredContent.map((row, i) => (
@@ -342,7 +342,7 @@ const Dashboard = () => {
                       </div>
                       <div className="text-right rtl:text-left shrink-0">
                         <div className={`text-lg font-black ${stockColor[row.status]}`}>{row.stock}</div>
-                        <div className="text-xs text-slate-400">unités</div>
+                        <div className="text-xs text-slate-400">{t('dash_units')}</div>
                       </div>
                       <div className="text-xs text-slate-400 shrink-0">
                         <div className="text-emerald-500">+{row.in}</div>
@@ -351,14 +351,14 @@ const Dashboard = () => {
                       {row.status !== 'ok' && (
                         <div className="shrink-0">
                           <span className={`text-xs font-bold px-2 py-1 rounded-lg ${row.status === 'empty' ? 'bg-red-100 text-red-600 dark:bg-red-900/30 dark:text-red-400' : 'bg-amber-100 text-amber-600 dark:bg-amber-900/30 dark:text-amber-400'}`}>
-                            {row.status === 'empty' ? 'Épuisé' : 'Stock bas'}
+                            {row.status === 'empty' ? t('dash_out_of_stock') : t('dash_low_stock')}
                           </span>
                         </div>
                       )}
                       <button 
                         onClick={() => handleDeleteItem(currentTab.content.indexOf(row))}
                         className="p-2 text-slate-400 hover:text-red-500 opacity-0 group-hover:opacity-100 transition-all shrink-0"
-                        title="Supprimer"
+                        title={t('btn_delete')}
                       >
                         <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" /></svg>
                       </button>
@@ -374,7 +374,7 @@ const Dashboard = () => {
                 {filteredContent.length === 0 ? (
                   <div className="py-12 text-center text-slate-400">
                     <svg className="w-12 h-12 mx-auto mb-3 text-slate-300 dark:text-slate-600" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" /></svg>
-                    <p>Aucun client trouvé</p>
+                    <p>{t('dash_no_clients')}</p>
                   </div>
                 ) : (
                   filteredContent.map((row, i) => (
@@ -384,14 +384,14 @@ const Dashboard = () => {
                       </div>
                       <div className="flex-1 min-w-0">
                         <div className="text-sm font-bold text-heading dark:text-white truncate">{row.name}</div>
-                        <div className="text-xs text-slate-400 truncate">{row.orders} commandes · {row.spent}</div>
+                        <div className="text-xs text-slate-400 truncate">{row.orders} {t('hero_orders').toLowerCase()} · {row.spent}</div>
                       </div>
                       <div className={`text-lg ${loyaltyColor[row.loyalty]}`} title={row.loyalty}>⭐</div>
                       <span className={`text-xs font-bold px-2.5 py-1 rounded-lg ${clientStatusColor[row.status]}`}>{row.status.toUpperCase()}</span>
                       <button 
                         onClick={() => handleDeleteItem(currentTab.content.indexOf(row))}
                         className="p-2 text-slate-400 hover:text-red-500 opacity-0 group-hover:opacity-100 transition-all shrink-0"
-                        title="Supprimer"
+                        title={t('btn_delete')}
                       >
                         <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" /></svg>
                       </button>
@@ -407,7 +407,7 @@ const Dashboard = () => {
                 {filteredContent.length === 0 ? (
                   <div className="py-12 text-center text-slate-400">
                     <svg className="w-12 h-12 mx-auto mb-3 text-slate-300 dark:text-slate-600" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" /></svg>
-                    <p>Aucun membre trouvé</p>
+                    <p>{t('dash_no_team')}</p>
                   </div>
                 ) : (
                   filteredContent.map((row, i) => (
@@ -421,17 +421,17 @@ const Dashboard = () => {
                       </div>
                       <div className="text-right rtl:text-left shrink-0">
                         <div className="text-sm font-black text-heading dark:text-white">{row.confirmed}</div>
-                        <div className="text-xs text-slate-400">actions</div>
+                        <div className="text-xs text-slate-400">{t('dash_actions')}</div>
                       </div>
                       <div className="text-right rtl:text-left shrink-0">
                         <div className="text-sm font-bold text-emerald-500">{row.rate}</div>
-                        <div className="text-xs text-slate-400">taux</div>
+                        <div className="text-xs text-slate-400">{t('dash_rate')}</div>
                       </div>
                       <div className={`w-2.5 h-2.5 rounded-full shrink-0 ${row.status === 'active' ? 'bg-emerald-500' : row.status === 'admin' ? 'bg-primary' : 'bg-slate-300 dark:bg-slate-600'}`} />
                       <button 
                         onClick={() => handleDeleteItem(currentTab.content.indexOf(row))}
                         className="p-2 text-slate-400 hover:text-red-500 opacity-0 group-hover:opacity-100 transition-all shrink-0"
-                        title="Supprimer"
+                        title={t('btn_delete')}
                       >
                         <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" /></svg>
                       </button>
@@ -447,7 +447,7 @@ const Dashboard = () => {
                 {filteredContent.length === 0 ? (
                   <div className="py-12 text-center text-slate-400">
                     <svg className="w-12 h-12 mx-auto mb-3 text-slate-300 dark:text-slate-600" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>
-                    <p>Aucune automatisation trouvée</p>
+                    <p>{t('dash_no_auto')}</p>
                   </div>
                 ) : (
                   filteredContent.map((row, i) => (
@@ -458,7 +458,7 @@ const Dashboard = () => {
                       </div>
                       <div className="text-right rtl:text-left shrink-0">
                         <div className="text-sm font-bold text-heading dark:text-white">{row.runs}</div>
-                        <div className="text-xs text-slate-400">exéc.</div>
+                        <div className="text-xs text-slate-400">{t('dash_exec')}</div>
                       </div>
                       <label className="relative inline-flex items-center cursor-pointer shrink-0">
                         <input type="checkbox" defaultChecked={row.status === 'active'} className="sr-only peer" />
@@ -467,7 +467,7 @@ const Dashboard = () => {
                       <button 
                         onClick={() => handleDeleteItem(currentTab.content.indexOf(row))}
                         className="p-2 text-slate-400 hover:text-red-500 opacity-0 group-hover:opacity-100 transition-all shrink-0"
-                        title="Supprimer"
+                        title={t('btn_delete')}
                       >
                         <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" /></svg>
                       </button>
@@ -484,7 +484,7 @@ const Dashboard = () => {
                   <div className="flex items-center gap-1.5 sm:gap-2 mb-6">
                     {['day', 'week', 'month'].map(p => (
                       <button key={p} onClick={() => setPeriod(p)} className={`px-3 sm:px-4 py-2 rounded-xl text-xs sm:text-sm font-bold transition-colors ${period === p ? 'bg-primary text-white' : 'bg-slate-100 dark:bg-slate-800 text-slate-500 hover:text-slate-700 dark:hover:text-slate-300'}`}>
-                        {p === 'day' ? "Aujourd'hui" : p === 'week' ? 'Semaine' : 'Mois'}
+                        {p === 'day' ? t('dash_today') : p === 'week' ? t('dash_week') : t('dash_month')}
                       </button>
                     ))}
                   </div>
@@ -499,7 +499,7 @@ const Dashboard = () => {
                   </div>
                   {/* Mini chart */}
                   <div className="mt-6 bg-slate-50 dark:bg-slate-800/50 rounded-2xl p-5 w-full max-w-5xl flex flex-col items-center">
-                    <div className="text-xs font-bold text-slate-400 uppercase tracking-wider mb-4">Commandes — Tendance</div>
+                    <div className="text-xs font-bold text-slate-400 uppercase tracking-wider mb-4">{t('dash_trend')}</div>
                     <div className="flex items-end gap-2 h-24 w-full">
                       {(period === 'day'
                         ? [30, 55, 40, 70, 85, 65, 95, 80, 90, 100, 75, 88]
@@ -529,21 +529,21 @@ const Dashboard = () => {
                 <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" /></svg>
               </button>
               
-              <h3 className="text-xl font-bold text-heading dark:text-white mb-6">Ajouter un élément</h3>
+              <h3 className="text-xl font-bold text-heading dark:text-white mb-6">{t('dash_add_item')}</h3>
               
               <div className="space-y-4">
                 {activeTab === 'orders' && (
                   <>
                     <div>
-                      <label className="block text-sm font-bold text-slate-600 dark:text-slate-300 mb-2">Client</label>
+                      <label className="block text-sm font-bold text-slate-600 dark:text-slate-300 mb-2">{t('dash_col_client')}</label>
                       <input type="text" value={newItem.client || ''} onChange={(e) => setNewItem({...newItem, client: e.target.value})} className="w-full px-4 py-3 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl text-body dark:text-white" placeholder="Nom du client" />
                     </div>
                     <div>
-                      <label className="block text-sm font-bold text-slate-600 dark:text-slate-300 mb-2">Agent</label>
+                      <label className="block text-sm font-bold text-slate-600 dark:text-slate-300 mb-2">{t('dash_col_agent')}</label>
                       <input type="text" value={newItem.agent || ''} onChange={(e) => setNewItem({...newItem, agent: e.target.value})} className="w-full px-4 py-3 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl text-body dark:text-white" placeholder="Nom de l'agent" />
                     </div>
                     <div>
-                      <label className="block text-sm font-bold text-slate-600 dark:text-slate-300 mb-2">Montant</label>
+                      <label className="block text-sm font-bold text-slate-600 dark:text-slate-300 mb-2">{t('dash_lbl_amount')}</label>
                       <input type="text" value={newItem.amount || ''} onChange={(e) => setNewItem({...newItem, amount: e.target.value})} className="w-full px-4 py-3 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl text-body dark:text-white" placeholder="Ex: 2,500 DA" />
                     </div>
                   </>
@@ -551,20 +551,20 @@ const Dashboard = () => {
                 {activeTab === 'stock' && (
                   <>
                     <div>
-                      <label className="block text-sm font-bold text-slate-600 dark:text-slate-300 mb-2">Produit</label>
+                      <label className="block text-sm font-bold text-slate-600 dark:text-slate-300 mb-2">{t('dash_lbl_product')}</label>
                       <input type="text" value={newItem.product || ''} onChange={(e) => setNewItem({...newItem, product: e.target.value})} className="w-full px-4 py-3 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl text-body dark:text-white" placeholder="Nom du produit" />
                     </div>
                     <div>
-                      <label className="block text-sm font-bold text-slate-600 dark:text-slate-300 mb-2">Stock</label>
+                      <label className="block text-sm font-bold text-slate-600 dark:text-slate-300 mb-2">{t('dash_tab2')}</label>
                       <input type="number" value={newItem.stock || ''} onChange={(e) => setNewItem({...newItem, stock: e.target.value})} className="w-full px-4 py-3 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl text-body dark:text-white" placeholder="Quantité en stock" />
                     </div>
                     <div className="grid grid-cols-2 gap-4">
                       <div>
-                        <label className="block text-sm font-bold text-slate-600 dark:text-slate-300 mb-2">Entrée</label>
+                        <label className="block text-sm font-bold text-slate-600 dark:text-slate-300 mb-2">{t('dash_lbl_in')}</label>
                         <input type="number" value={newItem.in || ''} onChange={(e) => setNewItem({...newItem, in: e.target.value})} className="w-full px-4 py-3 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl text-body dark:text-white" placeholder="0" />
                       </div>
                       <div>
-                        <label className="block text-sm font-bold text-slate-600 dark:text-slate-300 mb-2">Sortie</label>
+                        <label className="block text-sm font-bold text-slate-600 dark:text-slate-300 mb-2">{t('dash_lbl_out')}</label>
                         <input type="number" value={newItem.out || ''} onChange={(e) => setNewItem({...newItem, out: e.target.value})} className="w-full px-4 py-3 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl text-body dark:text-white" placeholder="0" />
                       </div>
                     </div>
@@ -573,15 +573,15 @@ const Dashboard = () => {
                 {activeTab === 'clients' && (
                   <>
                     <div>
-                      <label className="block text-sm font-bold text-slate-600 dark:text-slate-300 mb-2">Nom</label>
+                      <label className="block text-sm font-bold text-slate-600 dark:text-slate-300 mb-2">{t('dash_col_name')}</label>
                       <input type="text" value={newItem.name || ''} onChange={(e) => setNewItem({...newItem, name: e.target.value})} className="w-full px-4 py-3 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl text-body dark:text-white" placeholder="Nom du client" />
                     </div>
                     <div>
-                      <label className="block text-sm font-bold text-slate-600 dark:text-slate-300 mb-2">Commandes</label>
+                      <label className="block text-sm font-bold text-slate-600 dark:text-slate-300 mb-2">{t('dash_tab1')}</label>
                       <input type="number" value={newItem.orders || ''} onChange={(e) => setNewItem({...newItem, orders: e.target.value})} className="w-full px-4 py-3 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl text-body dark:text-white" placeholder="0" />
                     </div>
                     <div>
-                      <label className="block text-sm font-bold text-slate-600 dark:text-slate-300 mb-2">Total dépensé</label>
+                      <label className="block text-sm font-bold text-slate-600 dark:text-slate-300 mb-2">{t('form_lbl_commandes').replace('شهرياً','').replace('/ mois','')}</label>
                       <input type="text" value={newItem.spent || ''} onChange={(e) => setNewItem({...newItem, spent: e.target.value})} className="w-full px-4 py-3 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl text-body dark:text-white" placeholder="Ex: 10,000 DA" />
                     </div>
                   </>
@@ -589,11 +589,11 @@ const Dashboard = () => {
                 {activeTab === 'team' && (
                   <>
                     <div>
-                      <label className="block text-sm font-bold text-slate-600 dark:text-slate-300 mb-2">Nom</label>
+                      <label className="block text-sm font-bold text-slate-600 dark:text-slate-300 mb-2">{t('dash_col_name')}</label>
                       <input type="text" value={newItem.name || ''} onChange={(e) => setNewItem({...newItem, name: e.target.value})} className="w-full px-4 py-3 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl text-body dark:text-white" placeholder="Nom du membre" />
                     </div>
                     <div>
-                      <label className="block text-sm font-bold text-slate-600 dark:text-slate-300 mb-2">Rôle</label>
+                      <label className="block text-sm font-bold text-slate-600 dark:text-slate-300 mb-2">{t('dash_lbl_role')}</label>
                       <input type="text" value={newItem.role || ''} onChange={(e) => setNewItem({...newItem, role: e.target.value})} className="w-full px-4 py-3 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl text-body dark:text-white" placeholder="Ex: Agent commercial" />
                     </div>
                   </>
@@ -601,11 +601,11 @@ const Dashboard = () => {
                 {activeTab === 'auto' && (
                   <>
                     <div>
-                      <label className="block text-sm font-bold text-slate-600 dark:text-slate-300 mb-2">Déclencheur</label>
+                      <label className="block text-sm font-bold text-slate-600 dark:text-slate-300 mb-2">{t('dash_lbl_trigger')}</label>
                       <input type="text" value={newItem.trigger || ''} onChange={(e) => setNewItem({...newItem, trigger: e.target.value})} className="w-full px-4 py-3 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl text-body dark:text-white" placeholder="Ex: Commande confirmée" />
                     </div>
                     <div>
-                      <label className="block text-sm font-bold text-slate-600 dark:text-slate-300 mb-2">Action</label>
+                      <label className="block text-sm font-bold text-slate-600 dark:text-slate-300 mb-2">{t('dash_lbl_action')}</label>
                       <input type="text" value={newItem.action || ''} onChange={(e) => setNewItem({...newItem, action: e.target.value})} className="w-full px-4 py-3 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl text-body dark:text-white" placeholder="Ex: Envoyer SMS" />
                     </div>
                   </>
@@ -617,13 +617,13 @@ const Dashboard = () => {
                   onClick={() => setShowAddModal(false)}
                   className="flex-1 px-4 py-3 bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 rounded-xl font-bold hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors"
                 >
-                  Annuler
+                  {t('btn_cancel')}
                 </button>
                 <button 
                   onClick={handleAddItem}
                   className="flex-1 px-4 py-3 bg-primary text-white rounded-xl font-bold hover:bg-primary-hover transition-colors"
                 >
-                  Ajouter
+                  {t('btn_add')}
                 </button>
               </div>
             </div>

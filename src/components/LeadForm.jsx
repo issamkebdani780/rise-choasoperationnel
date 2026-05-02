@@ -35,7 +35,7 @@ const LeadForm = () => {
           <div className="text-center mb-10">
             <div className="inline-flex items-center gap-2 px-4 py-2 bg-blue-50 dark:bg-blue-900/20 border border-blue-100 dark:border-blue-800 rounded-full text-primary font-medium text-sm mb-6">
               <div className="w-2 h-2 rounded-full bg-primary animate-pulse-slow" />
-              Démarrez maintenant
+              {t('form_badge')}
             </div>
             <h2 className="text-3xl lg:text-4xl font-extrabold text-heading dark:text-white mb-4">
               {t('form_title')}
@@ -48,9 +48,9 @@ const LeadForm = () => {
           {/* Hooks */}
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 mb-8">
             {[
-              'Tu n\'as pas besoin de plus de ventes. Tu as besoin d\'ordre.',
-              'Le chaos interne ruine plus d\'entreprises que la concurrence.',
-              'Si tout passe par toi, ce n\'est pas une entreprise.',
+              t('form_hook_1'),
+              t('form_hook_2'),
+              t('form_hook_3'),
             ].map((hook, i) => (
               <div key={i} className="bg-slate-50 dark:bg-slate-900 rounded-2xl border border-slate-100 dark:border-slate-800 p-4 text-center">
                 <p className="text-xs font-bold text-primary leading-relaxed italic">"{hook}"</p>
@@ -62,8 +62,8 @@ const LeadForm = () => {
           {submitted ? (
             <div className="bg-emerald-50 dark:bg-emerald-900/20 border border-emerald-100 dark:border-emerald-800 rounded-[28px] p-12 text-center animate-scale-in">
               <div className="text-5xl mb-4">🎉</div>
-              <h3 className="text-2xl font-black text-heading dark:text-white mb-2">Demande reçue !</h3>
-              <p className="text-body dark:text-slate-400">Notre équipe vous contacte dans les 24h. Préparez-vous à mettre de l'ordre dans votre business.</p>
+              <h3 className="text-2xl font-black text-heading dark:text-white mb-2">{t('form_success_title')}</h3>
+              <p className="text-body dark:text-slate-400">{t('form_success_desc')}</p>
             </div>
           ) : (
             <form
@@ -184,7 +184,7 @@ const LeadForm = () => {
               </button>
 
               <p className="text-center text-xs text-slate-400 pt-1">
-                Vos données sont confidentielles. Aucun spam.
+                {t('form_confidential')}
               </p>
             </form>
           )}

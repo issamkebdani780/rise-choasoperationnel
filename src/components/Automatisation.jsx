@@ -92,10 +92,10 @@ export default function Automatisation() {
               <div className="flex items-start justify-between mb-7">
                 <div className="flex items-center gap-2">
                   <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse shadow-[0_0_8px_#10b981]" />
-                  <span className="text-[11px] font-bold tracking-widest uppercase text-emerald-500">Live</span>
+                  <span className="text-[11px] font-bold tracking-widest uppercase text-emerald-500">{t('auto_live')}</span>
                 </div>
                 <span className="text-[11px] font-bold text-slate-400 dark:text-slate-500 uppercase tracking-tighter">
-                  System Phase {String(activeIndex + 1).padStart(2, '0')}
+                  {t('auto_phase')} {String(activeIndex + 1).padStart(2, '0')}
                 </span>
               </div>
 
@@ -144,7 +144,7 @@ export default function Automatisation() {
           {/* ── Right: Text ── */}
           <div className="w-full lg:w-1/2 order-1 lg:order-2">
             <div className="inline-flex bg-amber-500/10 border border-amber-500/20 rounded-full px-4 py-1.5 mb-8">
-              <span className="text-[11px] font-bold text-amber-600 dark:text-amber-500 uppercase tracking-widest">Automatisation</span>
+              <span className="text-[11px] font-bold text-amber-600 dark:text-amber-500 uppercase tracking-widest">{t('nav_org')}</span>
             </div>
 
             <h2 className="text-4xl md:text-5xl lg:text-7xl font-black text-slate-900 dark:text-white mb-6 leading-[1.05] tracking-tight">
@@ -152,14 +152,14 @@ export default function Automatisation() {
             </h2>
 
             <p className="text-lg text-slate-600 dark:text-slate-400 mb-12 max-w-lg">
-              Transformez vos tâches répétitives en flux invisibles. Chaque heure gagnée est une opportunité de croissance.
+              {t('auto_desc')}
             </p>
 
             <div className="flex gap-0 mb-12 border-t border-slate-200 dark:border-white/5 pt-8">
               {[
-                { val: '6', label: 'Nodes', color: 'text-blue-500' },
-                { val: '24/7', label: 'Uptime', color: 'text-purple-500' },
-                { val: '+40%', label: 'Efficiency', color: 'text-emerald-500' },
+                { val: '6', label: t('auto_stat_1'), color: 'text-blue-500' },
+                { val: '24/7', label: t('auto_stat_2'), color: 'text-purple-500' },
+                { val: '+40%', label: t('auto_stat_3'), color: 'text-emerald-500' },
               ].map((s, i) => (
                 <div key={i} className={`flex-1 ${i < 2 ? 'border-r border-slate-200 dark:border-white/5' : ''} ${i > 0 ? 'pl-6' : 'pr-6'}`}>
                   <div className={`text-3xl font-black tracking-tighter ${s.color}`}>{s.val}</div>
@@ -170,10 +170,10 @@ export default function Automatisation() {
 
             <div className="flex gap-3">
               <button className="bg-slate-900 dark:bg-white text-white dark:text-slate-900 hover:scale-105 px-8 py-4 rounded-2xl font-black text-sm uppercase tracking-widest transition-all">
-                Démarrer
+                {t('btn_start')}
               </button>
               <button className="border border-slate-200 dark:border-white/10 hover:bg-white dark:hover:bg-white/5 px-8 py-4 rounded-2xl text-slate-900 dark:text-white font-black text-sm uppercase tracking-widest transition-all">
-                Voir Démo
+                {t('btn_view_demo')}
               </button>
             </div>
           </div>
